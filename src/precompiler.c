@@ -1,7 +1,7 @@
 #include "../include/precompiler.h"
 
 // Inizializza la struttura PreCompiler
-PreCompiler *init_precompiler(void)
+PreCompiler *init_precompiler()
 {
     PreCompiler *compiler = (PreCompiler *)malloc(sizeof(PreCompiler));
     if (!compiler)
@@ -119,12 +119,6 @@ int parse_arguments(int argc, char *argv[], PreCompiler *compiler)
             fprintf(stderr, "Opzione sconosciuta: %c\n", option);
             return 1;
         }
-    }
-
-    // Se non è stato specificato un file di input con -i, controlla se c'è un argomento posizionale
-    if (!compiler->input_filename && optind < argc)
-    {
-        compiler->input_filename = strdup(argv[optind]);
     }
 
     // Verifica che sia stato specificato un file di input
